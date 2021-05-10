@@ -48,7 +48,7 @@ $id = ED_getShipNameID();
 echo "<b>".$id[0] . "</b> [" . $id[1]. "]";
 ?>
 </font><br>
-<font size=4>CMDR. <?php echo ED_getCommanderName(); ?> - <?php echo $id[2]; ?></font>
+<font size=4>CMDR <?php echo ED_getCommanderName(); ?> - <?php echo $id[2]; ?></font>
 </center>
 </div>
 
