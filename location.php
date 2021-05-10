@@ -7,18 +7,22 @@ function ED_getLocation()
 {
 	$r = array();
 	
-	$r[] = ED_getContentFromEvent("Location", "StarSystem");
-	$r[] = ED_getContentFromEvent("Location", "StarPos");
-	
+	$r[0] = ED_getContentFromEvent("Location", "StarSystem");
+	$r[1] = ED_getContentFromEvent("Location", "StarPos");
+
 	if (ED_doesEventParameterExist("FSDJump", "StarSystem") == true)
 	{
 		$r[0] = ED_getContentFromEvent("FSDJump", "StarSystem");
 		$r[1] = ED_getContentFromEvent("FSDJump", "StarPos");
-		$r[] = ED_getContentFromEvent("FSDJump", "JumpDist");
+		$r[2] = ED_getContentFromEvent("FSDJump", "JumpDist");
 	}
 	
+	if (!isset($r[2])) {
+		$r[2] = 0;
+	}
+
 	if (ED_doesEventParameterExist("ApproachBody", "Body") == true)
-	{ $r[] = ED_getContentFromEvent("ApproachBody", "Body"); }
+	{ $r[3] = ED_getContentFromEvent("ApproachBody", "Body"); }
 	
 	$sol_x = 200 - 5;
 	$sol_y = 335 - 5;
@@ -27,7 +31,7 @@ function ED_getLocation()
 	$posptr_x = $sol_x + $xp;
 	$posptr_y = $sol_y + $yp;
 	$r[] = array($posptr_x, $posptr_y);
-	
+
 	return $r;
 }
 
@@ -75,6 +79,17 @@ function ED_DistToSol()
 	);
 
 	return $d;
+}
+
+
+function ED_getBody()
+{
+	$p = ED_getLocation();
+	if (isset($p[3]) && !is_array($p[3])) {
+		return $p[3];
+	}
+
+	return null;
 }
 
 

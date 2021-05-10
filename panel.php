@@ -66,7 +66,8 @@ echo "<b>".$id[0] . "</b> [" . $id[1]. "]";
 <font class="ed_section_text"> <?php $p = ED_getLocation(); echo $p[0]; ?> </font><br>
 <font class="ed_section_text_small">
 <?php
-echo ED_getDockedStation(); echo "<br>";
+if (ED_isDocked()) { echo ED_getDockedStation(); echo "<br>"; }
+if (ED_isPlanetSide()) { echo ED_getBody(); echo "<br>"; }
 $j = ED_getNextJump();
 if (count($j) > 0)
 {

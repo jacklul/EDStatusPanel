@@ -86,15 +86,36 @@ function ED_displayStatusBox($text, $c)
 	echo "<div class='".$c."'>".$text."</div>";
 }
 
-function ED_populateStatusPanel()
+function ED_getStatusFlags()
 {
 	$statuscontent = file_get_contents($GLOBALS["ed_journal_folder"]."\Status.json");
 	$status = json_decode($statuscontent, true);
 	$bin = decbin($status["Flags"]);
+
 	$fullbin = "";
-	
 	if (strlen($bin) < 32)
 	{ $diff = 32-strlen($bin); for ($i=0; $i<$diff; $i++) { $fullbin = $fullbin . "0"; } $fullbin = $fullbin.$bin; }
+
+	return $fullbin;
+}
+
+function ED_isDocked()
+{
+	$fullbin = ED_getStatusFlags();
+	
+	return $fullbin[31] == 1;
+}
+
+function ED_isPlanetSide()
+{
+	$fullbin = ED_getStatusFlags();
+
+	return $fullbin[10] == 1 && $fullbin[1] == 0;
+}
+
+function ED_populateStatusPanel()
+{
+	$fullbin = ED_getStatusFlags();
 	
 	$texts = array(
 	"SRV HIGHB",
