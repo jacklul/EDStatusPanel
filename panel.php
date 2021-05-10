@@ -14,7 +14,10 @@ include_once("./fuel.php");
 include_once("./pips.php");
 include_once("./comms.php");
 
-header( "refresh:2;url=panel.php" );
+if (!file_exists($GLOBALS["ed_journal_folder"]."\Status.json")) {
+    echo 'Unable to read journal files! Please verify that the path is correct!';
+    exit;
+}
 
 ?>
 
@@ -22,9 +25,21 @@ header( "refresh:2;url=panel.php" );
 
 <head>
 <link rel="stylesheet" type="text/css" href="css/edpanel.css">
+<title>CMDR's Panel</title>
+<script src="js/jquery.min.js"></script>
+<script>
+function startRefresh() {
+    $.get('', function(data) {
+        $(document.body).html(data);    
+    });
+}
+$(function() {
+    setTimeout(startRefresh, 1000);
+});
+</script>
 </head>
 
-<body>
+<body bgcolor=#040404>
 <br>
 <div class="ed_header"><center>
 <font size=7>
