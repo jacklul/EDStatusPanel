@@ -2,6 +2,10 @@
 
 include_once("./inc.php");
 
+if ((float)PHP_VERSION < 8) {
+	include_once("./polyfills.php");
+}
+
 function ED_getCurrentJournalFile()
 {
 	$jnlfl = "NONE";
