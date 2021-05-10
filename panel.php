@@ -34,7 +34,7 @@ function startRefresh() {
     });
 }
 $(function() {
-    setTimeout(startRefresh, 1000);
+    setTimeout(startRefresh, <?php echo $config['REFRESH']*1000; ?>);
 });
 </script>
 </head>
