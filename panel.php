@@ -52,7 +52,7 @@ echo "<b>".$id[0] . "</b> [" . $id[1]. "]";
 </center>
 </div>
 
-<br><br>
+<br>
 <table width=95% height=87% cellspacing=3 cellpadding=0 align=center>
 <tr>
 <td valign=middle align=left bgcolor=#262626 style='border-radius: 10px;'>
