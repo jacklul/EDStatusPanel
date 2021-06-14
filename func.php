@@ -119,7 +119,7 @@ function ED_populateStatusPanel()
 	
 	$texts = array(
 	"SRV HIGHB",
-	"FSD JUMP",
+	"JUMPING",
 	"ALTITUDE",
 	"NIGHT VSN",
 	
@@ -130,7 +130,7 @@ function ED_populateStatusPanel()
 	
 	"INTERDCTN",
 	"DANGER",
-	"PLANETSIDE",
+	"AT PLANET",
 	"OVERHEAT",
 	
 	"LOW FL",
@@ -151,7 +151,7 @@ function ED_populateStatusPanel()
 	"WING",
 	"HARD PTS.",
 	"FLT AST",
-	"SUPERCRUISE",
+	"SUPERCRS",
 	
 	"SHIELDS",
 	"LND GEAR",

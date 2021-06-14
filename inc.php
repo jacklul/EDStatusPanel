@@ -37,3 +37,11 @@ if (empty($username = $_COOKIE["EDSP_WINDOWS_USERNAME"])) {
 }
 
 $GLOBALS["ed_journal_folder"] = str_replace('%USERNAME%', $username, JOURNAL_PATH);
+
+// Screen resolutions for the separate panels
+$GLOBALS["ed_location_panel_res"] = array(1024, 600);
+
+// DO NOT EDIT
+$GLOBALS["ed_location_panel_maph"] = $GLOBALS["ed_location_panel_res"][1]-100;
+
+?>

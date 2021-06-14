@@ -60,6 +60,34 @@ function ED_getNextJump()
 }
 
 
+function ED_getAllJumps()
+{
+	$j = array();
+
+	$routefile = $GLOBALS["ed_journal_folder"]."/NavRoute.json";
+	if (file_exists($routefile) == true)
+	{
+		$locdata = ED_getLocation();
+		$loc = $locdata[0];
+
+		$routedata = file_get_contents($routefile);
+		$route = json_decode($routedata, true);
+		for ($i=0; $i<count($route["Route"])-1; $i++)
+		{
+			if ($route["Route"][$i]["StarSystem"] == $loc && $i <= count($route["Route"])-1)
+			{
+				$t = array();
+				$t[] = $route["Route"][$i+1]["StarSystem"];
+				$t[] = $route["Route"][$i+1]["StarPos"];
+				$j[] = $t;
+			}
+		}
+	}
+
+	return $j;
+}
+
+
 function ED_getDockedStation()
 {
 	$e = ED_getContentFromEvent("Docked", "StationName");
